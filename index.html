@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Himanshu | Data &amp; Business Intelligence Portfolio</title>
+<meta name="description" content="Portfolio of Himanshu Mamoria, an Electronics and Communication Engineering student building skills in data analytics and business intelligence.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8fafc;--pb:#a9c9e8;--pw:#dceafa;--navy:#183153;--lav:#dcd8f5;--grey:#e9eef4;--mute:#4b5f7a;--line:#dde5ef;--teal:#3e7cb1;--sh:0 8px 28px rgba(24,49,83,.08)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--navy);font:400 16px/1.7 Manrope,system-ui,sans-serif;overflow-x:hidden}
+
+/* ===== PANDA BACKGROUND (fixed layer, 80% opacity) ===== */
+#panda-bg{position:fixed;inset:0;z-index:0;opacity:.8;pointer-events:none;overflow:hidden}
+#panda-bg .bamboo{position:absolute;bottom:0;width:26px;transform-origin:bottom center;animation:sway 6s ease-in-out infinite alternate}
+#panda-bg .stalk{border-radius:12px;background:repeating-linear-gradient(to bottom,#4caf50 0 70px,#2e7d32 70px 78px,#81c784 78px 84px);box-shadow:inset -6px 0 8px rgba(0,0,0,.25)}
+#panda-bg .leaf{position:absolute;width:70px;height:22px;background:#4caf50;border-radius:0 100% 0 100%;transform-origin:left center;animation:flutter 3s ease-in-out infinite alternate}
+#panda-bg .leaf.right{transform:scaleX(-1);transform-origin:right center;animation:none}
+#panda-bg .panda{position:absolute;height:98vh;width:auto;right:3vw;bottom:0;object-fit:contain;animation:float 5s ease-in-out infinite}
+#panda-bg .arm{transform-box:fill-box;transform-origin:50% 100%;animation:munch 1.8s ease-in-out infinite}
+#panda-bg .jaw{transform-box:fill-box;transform-origin:50% 0}
+#panda-bg .panda.chewing .jaw{animation:chew .3s steps(2,jump-none) infinite}
+#panda-bg .drift{position:absolute;top:-6vh;font-size:22px;animation:fall linear infinite;opacity:.8}
+#burst{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden;opacity:.8}
+#burst span{position:absolute;font-size:20px;will-change:transform,opacity}
+@keyframes sway{from{transform:rotate(-2deg)}to{transform:rotate(2.5deg)}}
+@keyframes flutter{from{transform:rotate(-6deg)}to{transform:rotate(8deg)}}
+@keyframes float{50%{transform:translateY(-5px)}}
+@keyframes munch{50%{transform:rotate(-2.5deg)}}
+@keyframes chew{50%{transform:translateY(7px) scaleY(.8)}}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+/* page content sits above the panda layer */
+header,main,footer{position:relative;z-index:2}
+
+h1,h2,h3{font-family:Sora,Manrope,sans-serif;line-height:1.2;letter-spacing:-.015em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:92px 0;position:relative}
+/* semi-transparent so the panda stays visible behind */
+section.alt{background:linear-gradient(180deg,rgba(220,234,250,.55) 0%,rgba(248,250,252,.15) 100%)}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:10px}
+.lead{color:var(--mute);max-width:62ch;margin-bottom:38px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--sh)}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;font:600 .98rem Manrope,sans-serif;text-decoration:none;border:1.5px solid var(--navy);color:var(--navy);background:transparent;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--pb);border-color:var(--pb)}.btn.p:hover{background:#97bbe0}
+.btn.off{opacity:.5;pointer-events:none}
+.btn.sm{padding:7px 16px;font-size:.85rem}
+header{position:sticky;top:0;z-index:30;background:rgba(248,250,252,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{font:700 1.15rem Sora,sans-serif;text-decoration:none}
+.links{display:flex;gap:4px}
+.links a{text-decoration:none;font-size:.88rem;font-weight:600;color:var(--mute);padding:7px 12px;border-radius:999px}
+.links a:hover{background:var(--pw);color:var(--navy)}
+#menu{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font:600 .9rem Manrope;color:var(--navy);cursor:pointer}
+.hero{padding:70px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,var(--pb) 1.4px,transparent 1.6px) 0 0/28px 28px;opacity:.45;-webkit-mask-image:linear-gradient(120deg,transparent 35%,#000 100%);mask-image:linear-gradient(120deg,transparent 35%,#000 100%)}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;z-index:0}
+.hero .wrap{position:relative;z-index:1}
+.hg{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center}
+.tag{display:inline-block;background:var(--lav);padding:5px 14px;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(2.3rem,5.4vw,3.7rem);font-weight:700}
+.hero .sub{margin:20px 0 30px;color:var(--mute);font-size:1.08rem;max-width:52ch}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.photo{position:relative;aspect-ratio:4/5;max-width:400px;margin-left:auto;border-radius:34px;background:linear-gradient(150deg,var(--pw),var(--lav));border:1px solid #fff;box-shadow:var(--sh);display:grid;place-items:center;text-align:center;color:var(--mute);font-size:.88rem;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.float{position:absolute;left:12px;bottom:24px;width:170px;background:#fff;border-radius:18px;padding:14px;box-shadow:var(--sh);border:1px solid var(--line);text-align:left}
+.float small{color:var(--mute);font-size:.72rem}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:center}
+.two p+p{margin-top:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.chip{background:var(--pw);border-radius:999px;padding:5px 14px;font-size:.84rem;font-weight:600}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ico{width:46px;height:46px;border-radius:14px;background:var(--pw);display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px}
+.skill h3{font-size:1.05rem;margin-bottom:12px}
+.skill .chips{margin-top:0}.skill .chip{background:var(--grey)}
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.proj{padding:0;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.proj:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(24,49,83,.14)}
+.prev{aspect-ratio:16/9;background:linear-gradient(135deg,var(--pw),var(--lav));display:grid;place-items:center;position:relative;color:var(--mute);font-size:.82rem}
+.prev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pb{padding:24px}.pb h3{font-size:1.2rem;margin:10px 0 6px}.pb p{color:var(--mute);font-size:.95rem}
+.pb .chips{margin-top:12px}
+.links2{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+details{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:700;font-size:.92rem;list-style:none}
+summary::after{content:" +";color:var(--teal)}details[open] summary::after{content:" \2212"}
+summary::-webkit-details-marker{display:none}
+dl.cs{display:grid;gap:12px;margin-top:14px;font-size:.9rem}
+dl.cs dt{font-weight:700}dl.cs dd{color:var(--mute);margin:0}
+.flow{display:grid;grid-template-columns:repeat(8,1fr);margin-bottom:56px}
+.step{text-align:center;padding:0 6px;position:relative}
+.step::before{content:"";position:absolute;top:21px;left:-50%;width:100%;height:2px;background:var(--pb);z-index:0}
+.step:first-child::before{display:none}
+.nd{position:relative;z-index:1;width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--pb);display:grid;place-items:center;font:700 .95rem Sora}
+.step b{font-size:.84rem;display:block;line-height:1.3}
+.step span{font-size:.76rem;color:var(--mute);display:block;margin-top:4px;line-height:1.4}
+.seg{display:inline-flex;background:var(--grey);border-radius:999px;padding:4px;flex-wrap:wrap;margin-bottom:18px}
+.seg button{background:none;border:0;border-radius:999px;color:var(--mute);padding:8px 18px;font:600 .88rem Manrope,sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(24,49,83,.12)}
+.ctrl{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:14px}
+.ctrl label{font-size:.85rem;font-weight:700;display:grid;gap:2px}.ctrl output{color:var(--teal)}
+input[type=range]{width:100%;accent-color:var(--teal)}
+svg.ch{width:100%;height:auto;display:block}
+svg.ch text{fill:var(--mute);font-size:11px;font-family:Manrope,sans-serif}svg.ch .g{stroke:var(--line)}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.stats div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:7px 14px;font-size:.86rem}.stats b{font-size:1rem}
+.note{font-size:.8rem;color:var(--mute);margin-top:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.int{padding:22px}.int h3{font-size:1rem;margin-bottom:6px}.int p{font-size:.86rem;color:var(--mute);line-height:1.55}
+.tl{border-left:3px solid var(--pb);margin-left:8px}
+.tl>div{position:relative;padding:0 0 28px 28px}
+.tl>div::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:#fff;border:4px solid var(--teal)}
+.tl h3{font-size:1.1rem}.tl p{color:var(--mute);font-size:.94rem}.tl small{color:var(--teal);font-weight:700}
+.ph{background:repeating-linear-gradient(135deg,#fff,#fff 8px,var(--grey) 8px,var(--grey) 16px);border:1.5px dashed var(--pb);border-radius:16px;padding:16px 18px}
+.ph b{display:block;font-size:.95rem}.ph span{font-size:.84rem;color:var(--mute)}
+.res{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.paper{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--sh);padding:30px;font-size:.84rem;transform:rotate(-1.2deg)}
+.paper h3{font-size:1.3rem}.paper h4{font:700 .78rem Sora;margin:16px 0 6px;border-bottom:2px solid var(--pb);padding-bottom:3px}
+.paper p{color:var(--mute);line-height:1.5}
+.cbox{background:linear-gradient(140deg,var(--pw),var(--lav));border-radius:34px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.cbox h2{font-size:clamp(1.8rem,3.6vw,2.4rem)}
+.clist{list-style:none;padding:0;display:grid;gap:10px;margin-top:20px;font-weight:600}
+form{display:grid;gap:12px}
+label.f{font-weight:700;font-size:.88rem;display:grid;gap:4px}
+input:not([type=range]),textarea{font:inherit;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--navy);width:100%}
+textarea{min-height:104px;resize:vertical}
+footer{padding:28px 0;text-align:center;color:var(--mute);font-size:.86rem}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}.js .rv.in{opacity:1;transform:none}
+@media (max-width:900px){.hg,.two,.res,.cbox,.pg{grid-template-columns:1fr}.grid3,.grid4{grid-template-columns:1fr 1fr}.photo{margin:0 auto}.flow{grid-template-columns:repeat(4,1fr);row-gap:28px}.step:nth-child(5)::before{display:none}.ctrl{grid-template-columns:1fr}.cbox{padding:32px 24px}
+#menu{display:block}.links{display:none;position:absolute;top:66px;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 24px;border-bottom:1px solid var(--line)}.links.open{display:flex}section{padding:68px 0}#panda-bg .panda{height:78vh;right:-10vw}}
+@media (max-width:560px){.grid3,.grid4{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.step::before{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div id="panda-bg" aria-hidden="true"></div>
+<div id="burst" aria-hidden="true"></div>
+
+<header><div class="wrap"><nav aria-label="Main">
+  <a class="logo" href="#top" id="logo"></a>
+  <button id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+  <div class="links" id="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#approach">Approach</a><a href="#interests">Interests</a><a href="#education">Education</a><a href="#learning">Learning</a><a href="#resume">Resume</a><a href="#contact">Contact</a></div>
+</nav></div></header>
+
+<main id="top">
+<section class="hero"><div class="blob" style="width:340px;height:340px;background:var(--lav);top:-80px;right:-60px"></div><div class="blob" style="width:300px;height:300px;background:var(--pw);bottom:-100px;left:-80px"></div>
+<div class="wrap hg">
+  <div><span class="tag" id="role"></span>
+  <h1>Turning Data into Insights. Insights into Decisions.</h1>
+  <p class="sub" id="intro"></p>
+  <div class="cta"><a class="btn p" href="#projects">Explore My Work</a><a class="btn" href="#contact">Get in Touch</a></div></div>
+  <div class="photo" id="photo"><span id="phText">Profile photo placeholder<br>Set <code>photo</code> in CONFIG</span>
+    <div class="float" aria-hidden="true"><small>Sample KPI</small>
+      <svg viewBox="0 0 160 70" width="100%"><g fill="#a9c9e8"><rect x="4" y="38" width="20" height="28" rx="4"/><rect x="34" y="26" width="20" height="40" rx="4"/><rect x="64" y="32" width="20" height="34" rx="4"/></g><rect x="94" y="12" width="20" height="54" rx="4" fill="#183153"/><rect x="124" y="22" width="20" height="44" rx="4" fill="#dcd8f5"/></svg></div></div>
+</div></section>
+
+<section id="about"><div class="wrap two">
+  <div class="rv"><h2>About me</h2><div id="aboutText" style="color:var(--mute)"></div><div class="chips" id="aboutChips"></div></div>
+  <div class="card rv"><svg viewBox="0 0 320 220" width="100%" role="img" aria-label="Illustration of an analytics workflow: data, chart, insight"><rect x="8" y="14" width="304" height="192" rx="20" fill="#f8fafc" stroke="#dde5ef"/><g fill="#a9c9e8"><rect x="34" y="120" width="30" height="62" rx="6"/><rect x="78" y="92" width="30" height="90" rx="6"/><rect x="122" y="106" width="30" height="76" rx="6"/></g><rect x="166" y="64" width="30" height="118" rx="6" fill="#183153"/><path d="M40 84 L92 58 L138 70 L212 36 L276 46" fill="none" stroke="#3e7cb1" stroke-width="3" stroke-linecap="round"/><g fill="#3e7cb1"><circle cx="40" cy="84" r="5"/><circle cx="92" cy="58" r="5"/><circle cx="138" cy="70" r="5"/><circle cx="212" cy="36" r="5"/></g><circle cx="256" cy="120" r="30" fill="#dcd8f5"/><path d="M256 120 L256 90 A30 30 0 0 1 282 135 Z" fill="#a9c9e8"/></svg></div>
+</div></section>
+
+<section id="skills" class="alt"><div class="wrap"><h2 class="rv">Skills and technical toolkit</h2><p class="lead rv">The tools and methods I work with. Proof of skill lives in the projects, not in self-scores.</p><div class="grid3" id="skillList"></div></div></section>
+
+<section id="projects"><div class="wrap"><h2 class="rv">Featured projects</h2><p class="lead rv">Each project is a short case study: the business problem, the data, the method and what the numbers recommend. Entries in [brackets] are placeholders to replace with your own work.</p><div class="pg" id="projList"></div></div></section>
+
+<section id="approach" class="alt"><div class="wrap"><h2 class="rv">Data analytics and business intelligence</h2><p class="lead rv">How I move from a vague business question to a recommendation someone can act on.</p>
+  <div class="flow rv" id="flow"></div>
+  <h3 class="rv" style="margin-bottom:14px">Try the analytics yourself</h3>
+  <div class="seg" id="tabs" role="group" aria-label="Interactive model"></div>
+  <div class="card">
+    <div id="m0"><div class="ctrl"><label>Months ahead <output id="o0a"></output><input type="range" id="s0a" min="1" max="6" value="3"></label><label>Growth adjustment <output id="o0b"></output><input type="range" id="s0b" min="-50" max="50" value="0"></label><div></div></div><svg class="ch" id="c0" viewBox="0 0 560 250" role="img" aria-label="Sales forecast chart"></svg><div class="stats" id="t0"></div><p class="note">Sample data. A least-squares trend fitted to 12 months of sales; the adjustment scales the slope to test cautious or optimistic cases.</p></div>
+    <div id="m1" hidden><div class="ctrl"><label>Selling price <output id="o1a"></output><input type="range" id="s1a" min="20" max="120" value="60"></label><label>Unit cost <output id="o1b"></output><input type="range" id="s1b" min="5" max="60" value="25"></label><label>Fixed cost <output id="o1c"></output><input type="range" id="s1c" min="0" max="20000" step="500" value="6000"></label></div><svg class="ch" id="c1" viewBox="0 0 560 250" role="img" aria-label="Profit versus price chart"></svg><div class="stats" id="t1"></div><p class="note">Illustrative model: units sold = 1000 − 8 × price. The curve shows profit at every price; the dark dot is your choice.</p></div>
+    <div id="m2" hidden><div class="ctrl"><label>Noise in the data <output id="o2a"></output><input type="range" id="s2a" min="0" max="60" value="15"></label><div></div><div></div></div><svg class="ch" id="c2" viewBox="0 0 560 250" role="img" aria-label="Scatter plot with regression line"></svg><div class="stats" id="t2"></div><p class="note">Simulated ad spend vs sales. More noise weakens the correlation (r) and the reliability of the fitted line.</p></div>
+  </div></div></section>
+
+<section id="interests"><div class="wrap"><h2 class="rv">Areas of interest</h2><p class="lead rv">The questions I most want to work on.</p><div class="grid4" id="interestList"></div></div></section>
+
+<section id="education" class="alt"><div class="wrap"><h2 class="rv">Education</h2><p class="lead rv">Electronics taught me to think in systems: inputs, processing and outputs.</p><div class="tl rv" id="eduList"></div></div></section>
+
+<section id="learning"><div class="wrap"><h2 class="rv">Learning and development</h2><p class="lead rv">What I am studying now, and verified courses and certificates.</p>
+  <div class="chips rv" id="nowLearning" style="margin:0 0 24px"></div><div class="grid3" id="courseList"></div></div></section>
+
+<section id="resume" class="alt"><div class="wrap res">
+  <div class="rv"><h2>Resume</h2><p class="lead">Here is a brief summary of my experiences and projects to know me better.</p><a class="btn p" id="dl" download>Download Resume (PDF)</a></div>
+  <div class="paper rv" id="paper"></div>
+</div></section>
+
+<section id="contact"><div class="wrap"><div class="cbox">
+  <div><h2>Let’s Connect and Turn Ideas into Insights.</h2><p style="color:var(--mute);margin-top:12px">Looking for an internship, a project collaborator, or feedback on my work? I would like to hear from you.</p><ul class="clist" id="contactList"></ul></div>
+  <form id="form"><label class="f">Your name<input name="n" required autocomplete="name"></label><label class="f">Your email<input name="e" type="email" required autocomplete="email"></label><label class="f">Message<textarea name="m" required></textarea></label><button class="btn p" type="submit">Send message</button></form>
+</div></div></section>
+</main>
+<footer id="foot"></footer>
+
+<script>
+document.documentElement.classList.add("js");
+
+/* =====================  CONFIG: EDIT THIS ===================== */
+const CONFIG={
+  name:"Himanshu Mamoria ",
+  role:"ECE Student · Aspiring Data Analyst",
+  intro:"Third-year Electronics and Communication Engineering student building practical skills in Excel, Power BI, SQL and Python, turning raw data into clear business decisions.",
+  photo:"Data analysis.png",                       // e.g. "me.jpg"
+  pandaImage:"panda.png",                  // optional: transparent PNG of a real panda, e.g. "panda.png" (replaces the drawn panda)
+  email:"himanshumaoria06@gmail.com",
+  linkedin:"https://www.linkedin.com/in/himanshumamoriaofficial",                    // full URL
+  github:"https://github.com/himanshumamoria",                      // full URL
+  resumeUrl:"Resume1.pdf",                   // e.g. "resume.pdf"
+  about:[
+    "I am an ECE student who enjoys systems thinking: signals in, processing, insight out. That mindset carried naturally into data analytics.",
+    "I teach myself through structured roadmaps and hands-on projects, and I care about explaining findings so that a non-technical reader can act on them."
+  ],
+  chips:["Self-directed learner","Detail oriented","Clear communicator","B.Tech ECE"],
+  skills:[
+    {i:"📗",t:"Excel",c:["Pivot tables","Power Query","Lookups","Dashboards"]},
+    {i:"📊",t:"Power BI",c:["Data modelling","DAX basics","Interactive reports"]},
+    {i:"🗄️",t:"SQL",c:["Joins","Aggregations","Window functions","Cleaning"]},
+    {i:"🐍",t:"Python",c:["pandas","NumPy","Matplotlib","EDA"]},
+    {i:"📈",t:"Statistics",c:["Descriptive stats","Regression","Hypothesis tests"]},
+    {i:"🗣️",t:"Communication",c:["Data storytelling","Documentation","Presenting"]}
+  ],
+  projects:[
+    {tag:"Excel · Power BI",title:"[Retail Sales Dashboard]",desc:"[Replace with a one-line summary of your project.]",img:"",link:"",code:"",
+     cs:{Problem:"[What business question were you answering?]",Data:"[Source, size, and cleaning steps.]",Method:"[Tools and techniques used.]",Result:"[What the numbers recommend.]"}},
+    {tag:"SQL",title:"[Customer Segmentation Analysis]",desc:"[Replace with a one-line summary of your project.]",img:"",link:"",code:"",
+     cs:{Problem:"[Business question]",Data:"[Dataset details]",Method:"[Queries and approach]",Result:"[Findings and recommendation]"}},
+    {tag:"Python",title:"[Sales Forecasting Notebook]",desc:"[Replace with a one-line summary of your project.]",img:"",link:"",code:"",
+     cs:{Problem:"[Business question]",Data:"[Dataset details]",Method:"[Model and validation]",Result:"[Forecast and insight]"}},
+    {tag:"Python · Visualisation",title:"[Exploratory Data Analysis]",desc:"[Replace with a one-line summary of your project.]",img:"",link:"",code:"",
+     cs:{Problem:"[Business question]",Data:"[Dataset details]",Method:"[Charts and tests]",Result:"[Key takeaways]"}}
+  ],
+  flow:[["Ask","Define the business question"],["Collect","Gather the right data"],["Clean","Fix errors and gaps"],["Explore","Find patterns"],["Model","Test and forecast"],["Visualise","Build clear charts"],["Recommend","Turn numbers into action"],["Review","Measure the outcome"]],
+  interests:[["Business Intelligence","Dashboards that leaders actually use."],["Forecasting","Predicting demand and planning ahead."],["Retail Analytics","Pricing, inventory and customer behaviour."],["Automation","Replacing manual reports with pipelines."]],
+  edu:[{y:"2023 – Present",t:"B.Tech, Electronics and Communication Engineering",d:"Currently in third year. Coursework in communication systems, signals and programming."}],
+  now:["SQL practice","Power BI dashboards","Python for analysis","Statistics"],
+  courses:[{t:"[Course or certificate name]",d:"[Provider · year]"},{t:"[Course or certificate name]",d:"[Provider · year]"},{t:"[Course or certificate name]",d:"[Provider · year]"}],
+  resume:{headline:"Aspiring Data Analyst",summary:"ECE student with hands-on skills in Excel, Power BI, SQL and Python.",skills:"Excel · Power BI · SQL · Python · Statistics",education:"B.Tech ECE (in progress)",projects:"See Featured projects above."}
+};
+/* ===================== END CONFIG ===================== */
+
+const $=id=>document.getElementById(id);
+const NS="http://www.w3.org/2000/svg";
+
+/* ---------- Panda background ---------- */
+(function(){
+  const bg=$("panda-bg"),H=window.innerHeight;
+  [{l:5,h:.7},{l:15,h:.85},{l:82,h:.75},{l:92,h:.9},{l:48,h:.6}].forEach(t=>{
+    const b=document.createElement("div");b.className="bamboo";b.style.left=t.l+"%";b.style.animationDelay=(-Math.random()*6)+"s";
+    const sk=document.createElement("div");sk.className="stalk";sk.style.height=(H*t.h*.65)+"px";b.appendChild(sk);
+    const n=2+Math.floor(Math.random()*2);
+    for(let i=0;i<n;i++){
+      const lf=document.createElement("div"),r=Math.random()>.5;
+      lf.className="leaf"+(r?" right":"");lf.style.top=(10+Math.random()*60)+"%";
+      if(r)lf.style.right="-58px";else lf.style.left="-58px";
+      b.appendChild(lf);
+    }
+    bg.appendChild(b);
+  });
+  bg.insertAdjacentHTML("beforeend",CONFIG.pandaImage?`<img class="panda" id="panda" src="${CONFIG.pandaImage}" alt="Panda">`:`<svg class="panda" id="panda" viewBox="0 0 600 800" role="img" aria-label="Giant panda sitting and eating bamboo">
+<defs>
+<radialGradient id="pdW" cx="50%" cy="38%" r="68%"><stop offset="0" stop-color="#ffffff"/><stop offset=".62" stop-color="#f1f0ec"/><stop offset="1" stop-color="#a9adb0"/></radialGradient>
+<radialGradient id="pdB" cx="36%" cy="28%" r="85%"><stop offset="0" stop-color="#454547"/><stop offset=".55" stop-color="#18181a"/><stop offset="1" stop-color="#040405"/></radialGradient>
+<radialGradient id="pdM" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#f4f1ec"/><stop offset="1" stop-color="#cfc9c1"/></radialGradient>
+<linearGradient id="pdG" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#2b7a30"/><stop offset=".35" stop-color="#86c98a"/><stop offset=".7" stop-color="#4caf50"/><stop offset="1" stop-color="#1b5e20"/></linearGradient>
+<filter id="pdSh" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="furW" x="-8%" y="-8%" width="116%" height="116%">
+<feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3" result="warp"/>
+<feDisplacementMap in="SourceGraphic" in2="warp" scale="14" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.7 0.08" numOctaves="2" seed="8" result="hair"/>
+<feColorMatrix in="hair" type="matrix" values="0 0 0 0 .35  0 0 0 0 .35  0 0 0 0 .38  0 0 0 -.9 .62" result="ha"/>
+<feComposite in="ha" in2="rough" operator="in" result="st"/>
+<feMerge><feMergeNode in="rough"/><feMergeNode in="st"/></feMerge>
+</filter>
+<filter id="furB" x="-8%" y="-8%" width="116%" height="116%">
+<feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="5" result="warp"/>
+<feDisplacementMap in="SourceGraphic" in2="warp" scale="14" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.7 0.08" numOctaves="2" seed="11" result="hair"/>
+<feColorMatrix in="hair" type="matrix" values="0 0 0 0 .6  0 0 0 0 .6  0 0 0 0 .62  0 0 0 -.9 .55" result="ha"/>
+<feComposite in="ha" in2="rough" operator="in" result="st"/>
+<feMerge><feMergeNode in="rough"/><feMergeNode in="st"/></feMerge>
+</filter>
+</defs>
+<ellipse cx="300" cy="774" rx="250" ry="24" fill="#000" opacity=".32" filter="url(#pdSh)"/>
+<g filter="url(#furW)"><ellipse cx="300" cy="585" rx="205" ry="190" fill="url(#pdW)"/></g>
+<g filter="url(#furB)" fill="url(#pdB)">
+<ellipse cx="150" cy="702" rx="100" ry="70" transform="rotate(-12 150 702)"/>
+<ellipse cx="450" cy="702" rx="100" ry="70" transform="rotate(12 450 702)"/>
+<path d="M70 560 C60 450 140 380 300 385 C460 380 540 450 530 560 C520 612 450 622 430 560 L410 470 C350 440 250 440 190 470 L170 560 C150 622 80 612 70 560Z"/>
+<ellipse cx="245" cy="485" rx="44" ry="85" transform="rotate(-50 245 485)"/>
+<ellipse cx="400" cy="455" rx="72" ry="40" transform="rotate(-8 400 455)"/>
+</g>
+<g filter="url(#furW)">
+<ellipse cx="160" cy="292" rx="42" ry="48" fill="url(#pdW)"/><ellipse cx="440" cy="292" rx="42" ry="48" fill="url(#pdW)"/>
+<ellipse cx="300" cy="255" rx="158" ry="132" fill="url(#pdW)"/>
+</g>
+<g filter="url(#furB)" fill="url(#pdB)">
+<circle cx="185" cy="145" r="46"/><circle cx="415" cy="145" r="46"/>
+<ellipse cx="238" cy="255" rx="36" ry="52" transform="rotate(28 238 255)"/>
+<ellipse cx="362" cy="255" rx="36" ry="52" transform="rotate(-28 362 255)"/>
+</g>
+<circle cx="185" cy="148" r="22" fill="#3b3236" opacity=".8"/><circle cx="415" cy="148" r="22" fill="#3b3236" opacity=".8"/>
+<circle cx="246" cy="257" r="9" fill="#24160f"/><circle cx="354" cy="257" r="9" fill="#24160f"/>
+<circle cx="249" cy="253" r="3" fill="#fff"/><circle cx="357" cy="253" r="3" fill="#fff"/>
+<g filter="url(#furW)"><ellipse cx="300" cy="336" rx="68" ry="50" fill="url(#pdM)"/></g>
+<path d="M270 304 Q300 288 330 304 Q327 328 300 335 Q273 328 270 304Z" fill="#0b0b0c"/>
+<ellipse cx="292" cy="305" rx="13" ry="4.5" fill="#fff" opacity=".28"/>
+<path d="M300 335 L300 352" stroke="#2a2024" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g class="jaw"><ellipse cx="300" cy="372" rx="36" ry="18" fill="#e6e2dc"/><ellipse cx="300" cy="364" rx="22" ry="8" fill="#3a1c20"/><ellipse cx="300" cy="367" rx="12" ry="4.5" fill="#b04a55"/></g>
+<path d="M266 352 Q300 380 334 352" stroke="#2a2024" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+<g class="arm">
+<g transform="rotate(7 340 500)"><rect x="329" y="378" width="24" height="262" rx="10" fill="url(#pdG)"/>
+<rect x="327" y="442" width="28" height="7" rx="3" fill="#1b5e20"/><rect x="327" y="526" width="28" height="7" rx="3" fill="#1b5e20"/><rect x="327" y="610" width="28" height="7" rx="3" fill="#1b5e20"/>
+<path d="M353 442 Q410 396 474 420 Q420 454 353 442Z" fill="#5fae5f"/><path d="M353 442 Q405 428 474 420" stroke="#2e7d32" stroke-width="1.5" fill="none"/>
+<path d="M329 612 Q280 575 228 598 Q280 630 329 612Z" fill="#4f9f55"/></g>
+<ellipse cx="298" cy="532" rx="44" ry="34" fill="url(#pdB)"/><ellipse cx="368" cy="448" rx="40" ry="30" fill="url(#pdB)"/>
+<g stroke="#5a5a5c" stroke-width="2" stroke-linecap="round" fill="none"><path d="M280 512 v14 M298 508 v16 M316 512 v14"/><path d="M352 430 v13 M368 427 v15 M384 431 v13"/></g>
+</g>
+</svg>`);
+  for(let i=0;i<10;i++){
+    const l=document.createElement("span");l.className="drift";l.textContent="🍃";
+    l.style.left=Math.random()*100+"%";l.style.animationDuration=(6+Math.random()*8)+"s";l.style.animationDelay=(-Math.random()*10)+"s";
+    bg.appendChild(l);
+  }
+})();
+
+/* ---------- Leaf burst on every click / tap ---------- */
+(function(){
+  const layer=$("burst"),panda=$("panda"),icons=["🍃","🌿","🎋","🍃"];
+  let chewT;
+  addEventListener("pointerdown",e=>{
+    if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+    for(let i=0;i<8;i++){
+      const s=document.createElement("span");s.textContent=icons[i%icons.length];
+      s.style.left=e.clientX+"px";s.style.top=e.clientY+"px";layer.appendChild(s);
+      const a=Math.random()*Math.PI*2,d=40+Math.random()*60,rot=(Math.random()-.5)*540;
+      s.animate([{transform:"translate(-50%,-50%) scale(.6)",opacity:1},
+        {transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d+30}px)) rotate(${rot}deg) scale(1)`,opacity:0}],
+        {duration:800+Math.random()*400,easing:"cubic-bezier(.2,.7,.3,1)"}).onfinish=()=>s.remove();
+    }
+    if(panda){panda.classList.add("chewing");clearTimeout(chewT);chewT=setTimeout(()=>panda.classList.remove("chewing"),1800);}
+  });
+})();
+
+/* ---------- Render content ---------- */
+const C=CONFIG;
+document.title=C.name+" | Data & Business Intelligence Portfolio";
+$("logo").textContent=C.name+".";
+$("role").textContent=C.role;$("intro").textContent=C.intro;
+if(C.photo){const im=new Image();im.src=C.photo;im.alt="Portrait of "+C.name;im.onload=()=>{$("phText").remove();$("photo").prepend(im)};}
+$("aboutText").innerHTML=C.about.map(p=>`<p>${p}</p>`).join("");
+$("aboutChips").innerHTML=C.chips.map(c=>`<span class="chip">${c}</span>`).join("");
+$("skillList").innerHTML=C.skills.map(s=>`<div class="card skill rv"><div class="ico">${s.i}</div><h3>${s.t}</h3><div class="chips">${s.c.map(c=>`<span class="chip">${c}</span>`).join("")}</div></div>`).join("");
+$("projList").innerHTML=C.projects.map(p=>`<article class="card proj rv"><div class="prev">${p.img?`<img src="${p.img}" alt="${p.title} preview" loading="lazy">`:"Project preview"}</div><div class="pb"><span class="chip">${p.tag}</span><h3>${p.title}</h3><p>${p.desc}</p>
+<details><summary>Case study</summary><dl class="cs">${Object.entries(p.cs).map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl></details>
+<div class="links2"><a class="btn sm p ${p.link?"":"off"}" ${p.link?`href="${p.link}" target="_blank" rel="noopener"`:""}>View project</a><a class="btn sm ${p.code?"":"off"}" ${p.code?`href="${p.code}" target="_blank" rel="noopener"`:""}>Code</a></div></div></article>`).join("");
+$("flow").innerHTML=C.flow.map((f,i)=>`<div class="step"><div class="nd">${i+1}</div><b>${f[0]}</b><span>${f[1]}</span></div>`).join("");
+$("interestList").innerHTML=C.interests.map(i=>`<div class="card int rv"><h3>${i[0]}</h3><p>${i[1]}</p></div>`).join("");
+$("eduList").innerHTML=C.edu.map(e=>`<div><small>${e.y}</small><h3>${e.t}</h3><p>${e.d}</p></div>`).join("");
+$("nowLearning").innerHTML=C.now.map(n=>`<span class="chip">Learning: ${n}</span>`).join("");
+$("courseList").innerHTML=C.courses.map(c=>`<div class="ph rv"><b>${c.t}</b><span>${c.d}</span></div>`).join("");
+const R=C.resume;
+$("paper").innerHTML=`<h3>${C.name}</h3><p>${R.headline}</p><h4>SUMMARY</h4><p>${R.summary}</p><h4>SKILLS</h4><p>${R.skills}</p><h4>EDUCATION</h4><p>${R.education}</p><h4>PROJECTS</h4><p>${R.projects}</p>`;
+const dl=$("dl");if(C.resumeUrl)dl.href=C.resumeUrl;else dl.classList.add("off");
+$("contactList").innerHTML=[`📧 <a href="mailto:${C.email}">${C.email}</a>`,C.linkedin&&`💼 <a href="${C.linkedin}" target="_blank" rel="noopener">LinkedIn</a>`,C.github&&`💻 <a href="${C.github}" target="_blank" rel="noopener">GitHub</a>`].filter(Boolean).map(x=>`<li>${x}</li>`).join("");
+$("foot").textContent="© "+new Date().getFullYear()+" "+C.name+". Built with HTML, CSS and JavaScript.";
+$("form").addEventListener("submit",e=>{e.preventDefault();const f=e.target;
+  location.href=`mailto:${C.email}?subject=${encodeURIComponent("Portfolio message from "+f.n.value)}&body=${encodeURIComponent(f.m.value+"\n\n"+f.n.value+" ("+f.e.value+")")}`;});
+
+/* ---------- Nav ---------- */
+const menu=$("menu"),links=$("links");
+menu.onclick=()=>{const o=links.classList.toggle("open");menu.setAttribute("aria-expanded",o)};
+links.addEventListener("click",e=>{if(e.target.tagName==="A"){links.classList.remove("open");menu.setAttribute("aria-expanded",false)}});
+
+/* ---------- Scroll reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+/* ---------- Interactive analytics ---------- */
+const tabs=[["Sales forecast","m0"],["Pricing & profit","m1"],["Correlation","m2"]];
+$("tabs").innerHTML=tabs.map((t,i)=>`<button type="button" data-i="${i}" aria-pressed="${i==0}">${t[0]}</button>`).join("");
+$("tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  [...$("tabs").children].forEach(x=>x.setAttribute("aria-pressed",x===b));
+  tabs.forEach((t,i)=>$(t[1]).hidden=i!=b.dataset.i);});
+const el=(n,a,p)=>{const x=document.createElementNS(NS,n);for(const k in a)x.setAttribute(k,a[k]);p&&p.appendChild(x);return x};
+const txt=(p,x,y,s,anchor)=>{const t=el("text",{x,y,"text-anchor":anchor||"middle"},p);t.textContent=s;return t};
+function frame(svg,xl,yl,yMin,yMax,fy){
+  svg.innerHTML="";
+  for(let i=0;i<=4;i++){const y=220-i*45;el("line",{x1:50,x2:540,y1:y,y2:y,class:"g"},svg);txt(svg,44,y+4,fy(yMin+(yMax-yMin)*i/4),"end")}
+  txt(svg,295,244,xl);const t=txt(svg,12,125,yl);t.setAttribute("transform","rotate(-90 12 125)");
+}
+const fmt=n=>Math.round(n).toLocaleString("en-IN");
+
+/* Model 0: forecast */
+const sales=[120,132,128,145,150,162,158,175,181,190,188,205];
+(function(){
+  const n=sales.length,xm=(n-1)/2,ym=sales.reduce((a,b)=>a+b)/n;
+  let sxy=0,sxx=0;sales.forEach((y,i)=>{sxy+=(i-xm)*(y-ym);sxx+=(i-xm)**2});
+  const b=sxy/sxx,a=ym-b*xm,svg=$("c0");
+  function draw(){
+    const m=+$("s0a").value,adj=+$("s0b").value;
+    $("o0a").textContent=m;$("o0b").textContent=(adj>0?"+":"")+adj+"%";
+    const b2=b*(1+adj/100),last=sales[n-1],total=n+6-1;
+    const X=i=>50+i*(490/total),Y=v=>220-(v-80)*(180/(300-80));
+    frame(svg,"Month","Sales (units)",80,300,fmt);
+    el("polyline",{points:sales.map((v,i)=>X(i)+","+Y(v)).join(" "),fill:"none",stroke:"#183153","stroke-width":2.5},svg);
+    sales.forEach((v,i)=>el("circle",{cx:X(i),cy:Y(v),r:3.5,fill:"#183153"},svg));
+    const pts=[[n-1,last]];for(let i=1;i<=m;i++)pts.push([n-1+i,last+b2*i]);
+    el("polyline",{points:pts.map(p=>X(p[0])+","+Y(p[1])).join(" "),fill:"none",stroke:"#3e7cb1","stroke-width":2.5,"stroke-dasharray":"6 5"},svg);
+    pts.slice(1).forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:4,fill:"#a9c9e8",stroke:"#3e7cb1"},svg));
+    const f=pts[pts.length-1][1];
+    $("t0").innerHTML=`<div>Last month <b>${fmt(last)}</b></div><div>Forecast in ${m} mo <b>${fmt(f)}</b></div><div>Change <b>${((f/last-1)*100).toFixed(1)}%</b></div>`;
+  }
+  ["s0a","s0b"].forEach(i=>$(i).addEventListener("input",draw));draw();
+})();
+
+/* Model 1: profit vs price */
+(function(){
+  const svg=$("c1");
+  function draw(){
+    const p=+$("s1a").value,c=+$("s1b").value,f=+$("s1c").value;
+    $("o1a").textContent="₹"+p;$("o1b").textContent="₹"+c;$("o1c").textContent="₹"+fmt(f);
+    const prof=x=>(x-c)*Math.max(0,1000-8*x)-f;
+    let pts=[],mn=Infinity,mx=-Infinity,best=20;
+    for(let x=20;x<=120;x++){const v=prof(x);pts.push([x,v]);if(v<mn)mn=v;if(v>mx){mx=v;best=x}}
+    const lo=Math.min(mn,0),hi=Math.max(mx,1),X=x=>50+(x-20)*(490/100),Y=v=>220-(v-lo)*(180/(hi-lo));
+    frame(svg,"Selling price (₹)","Profit (₹)",lo,hi,fmt);
+    el("line",{x1:50,x2:540,y1:Y(0),y2:Y(0),stroke:"#4b5f7a","stroke-dasharray":"3 4"},svg);
+    el("polyline",{points:pts.map(q=>X(q[0])+","+Y(q[1])).join(" "),fill:"none",stroke:"#3e7cb1","stroke-width":2.5},svg);
+    el("circle",{cx:X(best),cy:Y(mx),r:5,fill:"#a9c9e8",stroke:"#3e7cb1"},svg);
+    el("circle",{cx:X(p),cy:Y(prof(p)),r:6,fill:"#183153"},svg);
+    const u=Math.max(0,1000-8*p);
+    $("t1").innerHTML=`<div>Units <b>${fmt(u)}</b></div><div>Revenue <b>₹${fmt(u*p)}</b></div><div>Profit <b>₹${fmt(prof(p))}</b></div><div>Best price <b>₹${best}</b></div>`;
+  }
+  ["s1a","s1b","s1c"].forEach(i=>$(i).addEventListener("input",draw));draw();
+})();
+
+/* Model 2: scatter + regression */
+(function(){
+  let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const base=Array.from({length:40},()=>({x:10+rnd()*90,e:(rnd()+rnd()+rnd()-1.5)*2}));
+  const svg=$("c2");
+  function draw(){
+    const k=+$("s2a").value;$("o2a").textContent=k;
+    const d=base.map(q=>({x:q.x,y:Math.max(0,Math.min(300,2*q.x+20+q.e*k*2))}));
+    const n=d.length,mx=d.reduce((a,q)=>a+q.x,0)/n,my=d.reduce((a,q)=>a+q.y,0)/n;
+    let sxy=0,sxx=0,syy=0;d.forEach(q=>{sxy+=(q.x-mx)*(q.y-my);sxx+=(q.x-mx)**2;syy+=(q.y-my)**2});
+    const b=sxy/sxx,a=my-b*mx,r=sxy/Math.sqrt(sxx*syy);
+    const X=x=>50+(x-10)*(490/100),Y=v=>220-v*(180/300);
+    frame(svg,"Ad spend (₹ thousand)","Sales (units)",0,300,fmt);
+    d.forEach(q=>el("circle",{cx:X(q.x),cy:Y(q.y),r:4,fill:"#a9c9e8",stroke:"#3e7cb1"},svg));
+    el("line",{x1:X(10),y1:Y(Math.max(0,Math.min(300,a+b*10))),x2:X(100),y2:Y(Math.max(0,Math.min(300,a+b*100))),stroke:"#183153","stroke-width":2.5},svg);
+    $("t2").innerHTML=`<div>Correlation r <b>${r.toFixed(2)}</b></div><div>R² <b>${(r*r).toFixed(2)}</b></div><div>Slope <b>${b.toFixed(2)}</b></div>`;
+  }
+  $("s2a").addEventListener("input",draw);draw();
+})();
+</script>
+</body>
+</html>
